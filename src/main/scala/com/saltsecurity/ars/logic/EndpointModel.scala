@@ -7,11 +7,11 @@ import com.saltsecurity.ars.enums.ParamLocations.ParamLocation
 
 case class EndpointModel(path: String,
                          method: String,
-                         query_params: List[Parameter],
+                         queryParams: List[Parameter],
                          headers: List[Parameter],
                          body: List[Parameter]) {
 
-  private lazy val queryMap: Map[String, Parameter] = query_params.map(p => (p.name, p)).toMap
+  private lazy val queryMap: Map[String, Parameter] = queryParams.map(p => (p.name, p)).toMap
   private lazy val headerMap: Map[String, Parameter] = headers.map(p => (p.name, p)).toMap
   private lazy val bodyMap: Map[String, Parameter] = body.map(p => (p.name, p)).toMap
 
@@ -19,7 +19,7 @@ case class EndpointModel(path: String,
     ifc.Parameter(paramLocation.toString, p.name, p.types, p.required)
   def toDataLayer: Model =
     ifc.Model(path, method,
-      query_params.map(paramToDataLayer(ParamLocations.Query,_)),
+      queryParams.map(paramToDataLayer(ParamLocations.Query,_)),
       headers.map(paramToDataLayer(ParamLocations.Header,_)),
       body.map(paramToDataLayer(ParamLocations.Body,_)))
 

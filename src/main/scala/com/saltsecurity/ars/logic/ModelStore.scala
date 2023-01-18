@@ -8,7 +8,7 @@ class ModelStore (modelDao: ModelDao) {
   private val logger =  LoggerFactory.getLogger(getClass)
 
   def put(model: EndpointModel): Unit = {
-    logger.info(s"Putting endpoint model $model")
+    logger.info(s"Putting endpoint model ${model}")
     modelDao.put(model.toDataLayer)
   }
   def get(id: EndpointId): Option[EndpointModel] = {

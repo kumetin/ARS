@@ -18,7 +18,7 @@ object ParamTypes extends Enumeration {
   val List = Type("List", isDate)
   val Date = Type("Date", isEmail)
   val Email = Type("Email", isUUID)
-  val AuthToken = Type("AuthToken", isAuthToken)
+  val AuthToken = Type("Auth-Token", isAuthToken)
 
   def fromString(typ: String): ParamType = typ match {
     case "Int" => Int

@@ -7,15 +7,15 @@ import org.scalatra.ScalatraServlet
 trait ValidationUtils { self: ScalatraServlet =>
 
   implicit class PimpOption[T](o: Option[T]) {
-    def getOrNotFound(extra: String = "")(implicit mf: scala.reflect.Manifest[T]) = {
-      o.getOrElse(halt(404, s"resource not found. $extra"))
+    def getOrNotFound(implicit mf: scala.reflect.Manifest[T]) = {
+      o.getOrElse(halt(404, s"resource not found"))
     }
   }
 
   implicit class PimpJValue(jv: JValue) {
-    def extractOrBadRequest[T](extra: String)(implicit formats: Formats, mf: scala.reflect.Manifest[T]) = {
+    def extractOrBadRequest[T](implicit formats: Formats, mf: scala.reflect.Manifest[T]) = {
       jv.extractOpt[T](formats, mf).getOrElse{
-        halt(400, s"bad request - unexpected payload (${JsonMethods.pretty(jv)}) $extra")
+        halt(400, s"Bad request - Unexpected payload (${JsonMethods.pretty(jv)})")
       }
     }
   }

@@ -2,7 +2,7 @@ package com.saltsecurity.ars
 
 import com.saltsecurity.ars.logic.EndpointModel
 import com.saltsecurity.ars.server.APIServlet
-import com.saltsecurity.ars.testing.JsonImplicits._
+import com.saltsecurity.ars.utils.JsonImplicits._
 import org.json4s.{DefaultFormats, Formats}
 import org.scalatra.test.scalatest._
 

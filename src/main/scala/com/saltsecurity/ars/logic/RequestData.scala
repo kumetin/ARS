@@ -2,11 +2,11 @@ package com.saltsecurity.ars.logic
 
 case class RequestData(path: String,
                        method: String,
-                       query_params: List[RequestDataParameter],
+                       queryParams: List[RequestDataParameter],
                        headers: List[RequestDataParameter],
                        body: List[RequestDataParameter]) {
 
-  private lazy val queryMap: Map[String, String] = query_params.map(p => (p.name,p.value)).toMap
+  private lazy val queryMap: Map[String, String] = queryParams.map(p => (p.name,p.value)).toMap
   private lazy val headerMap: Map[String, String] = headers.map(p => (p.name,p.value)).toMap
   private lazy val bodyMap: Map[String, String] = body.map(p => (p.name,p.value)).toMap
 

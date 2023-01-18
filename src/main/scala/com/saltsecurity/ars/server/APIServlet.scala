@@ -16,17 +16,17 @@ class APIServlet extends ScalatraServlet with JacksonJsonSupport with Validation
 
   // Update endpoints model store
   put("/model/update") {
-    val endpointModel = parsedBody.extractOrBadRequest[EndpointModel]("Expected a json that can be parsed as `EndpointModel`")
+    val endpointModel = parsedBody.extractOrBadRequest[EndpointModel]
     Services.modelStore.put(endpointModel)
   }
 
   // Check for abnormalities given in a request data
   put("/model/run") {
-    val requestData = parsedBody.extractOrBadRequest[RequestData]("Expected a json that can be parsed as `RequestData`")
+    val requestData = parsedBody.extractOrBadRequest[RequestData]
     val endpointId = EndpointId.fromRequestData(requestData)
     val model = Services.modelStore
       .get(endpointId)
-      .getOrNotFound(s"Could not find a corresponding model (by endpoint id $endpointId) for the given request data")
+      .getOrNotFound
     ModelRunner.findAbnormalities(model, requestData)
   }
 

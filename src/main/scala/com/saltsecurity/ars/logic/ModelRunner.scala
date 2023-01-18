@@ -39,7 +39,7 @@ private [logic] class RequiredParametersRule extends Rule {
   override def findAbnormalities(endpointModel: EndpointModel, requestData: RequestData): List[Abnormality] = {
 
     val abnormalities: Iterable[Abnormality] =
-      endpointModel.query_params
+      endpointModel.queryParams
       .find{case p => p.required && requestData.getQueryParam(p.name).isEmpty}
       .map(p => MissingRequiredParam(EndpointId(endpointModel.path, endpointModel.method), ParamLocations.Query, p.name)) ++
     endpointModel.headers
@@ -55,7 +55,7 @@ private [logic] class RequiredParametersRule extends Rule {
 
 private [logic] class IncorrectParameterTypeRule extends Rule {
   override def findAbnormalities(endpointModel: EndpointModel, requestData: RequestData): List[Abnormality] = {
-    endpointModel.query_params.filter { case p =>
+    endpointModel.queryParams.filter { case p =>
       val applicableTypes: Seq[ParamType] = p.types.map(ParamTypes.fromString)
       val value: Option[String] = requestData.getQueryParam(p.name)
       value.exists(v => applicableTypes.forall(!_.isApplicable(v)))

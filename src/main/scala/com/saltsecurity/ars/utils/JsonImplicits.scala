@@ -1,4 +1,4 @@
-package com.saltsecurity.ars.testing
+package com.saltsecurity.ars.utils
 
 import org.json4s.JsonAST.JValue
 import org.json4s.jackson.{JsonMethods, compactJson, parseJson}
@@ -18,6 +18,6 @@ object JsonImplicits {
 
   implicit class FromInstance[T](o: JsonInput) {
     def asJson = parseJson(o)
-    def asString: String = compactJson(o.asJson)
+    def asJsonString: String = compactJson(o.asJson)
   }
 }
