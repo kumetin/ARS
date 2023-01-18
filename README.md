@@ -3,13 +3,24 @@
 
 ARS is an Abnormal Requests Server.
 
+## Build & Run ##
+
+```sh
+$ sbt
+> jetty:start
+```
+
+## Tech Stack
+- Scala 2.13
+- Scalatra for Web API (Jetty under the hood)
+
 ## API Layer `com.ars.server`
 
-Outside, via REST-API, it provides two features:
+External interface, via HTTP-API, it provides two features:
 1. *[Model Store](ars.logic.ModelStore)* - loads a model of an endpoint into the model store.
 2. *[Model Validate](ars.logic.ModelValidator)* - validates a model of a request against its corresponding endpoint model and returns any abnormalities found
 
-The API is further detailed in the API section
+Examples of json represting
 
 ## Service Layer `com.ars.logic`
 

@@ -1,4 +1,4 @@
-package com.ars.enums
+package com.saltsecurity.ars.enums
 
 object ParamTypes extends Enumeration {
   type ParamType = Value

@@ -1,14 +1,22 @@
-import Dependencies._
+val ScalatraVersion = "2.8.2"
 
-ThisBuild / scalaVersion     := "2.13.8"
-ThisBuild / version          := "0.1.0-SNAPSHOT"
-ThisBuild / organization     := "com.example"
-ThisBuild / organizationName := "example"
+ThisBuild / scalaVersion := "2.13.9"
+ThisBuild / organization := "com.saltsecurity"
 
-lazy val root = (project in file("."))
+lazy val hello = (project in file("."))
   .settings(
-    name := "AbnormalRequestServer",
-    libraryDependencies += scalaTest % Test
+    name := "ars",
+    version := "0.1.0-SNAPSHOT",
+    libraryDependencies ++= Seq(
+      "org.scalatra" %% "scalatra" % ScalatraVersion,
+      "org.scalatra" %% "scalatra-json" % ScalatraVersion,
+      "org.scalatra" %% "scalatra-scalatest" % ScalatraVersion % "test",
+      "org.json4s"   %% "json4s-jackson" % "4.0.1",
+      "ch.qos.logback" % "logback-classic" % "1.2.3" % "runtime",
+      "org.eclipse.jetty" % "jetty-webapp" % "9.4.43.v20210629" % "container",
+      "javax.servlet" % "javax.servlet-api" % "3.1.0" % "provided"
+    )
   )
 
-// See https://www.scala-sbt.org/1.x/docs/Using-Sonatype.html for instructions on how to publish to Sonatype.
+enablePlugins(SbtTwirl)
+enablePlugins(JettyPlugin)

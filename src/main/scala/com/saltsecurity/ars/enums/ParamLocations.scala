@@ -1,4 +1,4 @@
-package com.ars.enums
+package com.saltsecurity.ars.enums
 
 object ParamLocations extends Enumeration {
   type ParamLocation = Value

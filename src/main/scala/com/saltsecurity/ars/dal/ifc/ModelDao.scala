@@ -1,4 +1,4 @@
-package com.ars.dal.ifc
+package com.saltsecurity.ars.dal.ifc
 
 trait ModelDao {
   def put(model: Model): Unit
