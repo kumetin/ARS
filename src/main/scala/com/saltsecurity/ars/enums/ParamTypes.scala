@@ -27,7 +27,7 @@ object ParamTypes extends Enumeration {
     case "List" => List
     case "Date" => Date
     case "Email" => Email
-    case "AuthToken" => AuthToken
+    case "Auth-Token" => AuthToken
   }
   private def isInt(v: String): Boolean = v.toIntOption.nonEmpty
   private def isBoolean(v: String): Boolean = v.toBooleanOption.nonEmpty
